@@ -176,16 +176,7 @@ rm ~/.account-nuker/jdm.json
 
 ---
 
-## Contributing
 
-Pull requests are welcome. Please open an issue first for major changes.
-
-1. Fork the repo
-2. Create a feature branch: `git checkout -b feature/my-feature`
-3. Commit: `git commit -m 'Add my feature'`
-4. Push and open a PR
-
----
 
 ## License
 

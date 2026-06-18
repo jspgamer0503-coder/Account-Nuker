@@ -53,7 +53,7 @@ from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn
 from rich.text import Text
 
 # ── Constants ─────────────────────────────────────────────────────────────────
-VERSION    = "1.2.0"
+VERSION    = "1.3.0"
 APP_DIR    = Path.home() / ".account-nuker"
 CREDS_FILE = APP_DIR / "creds.json"
 JDM_CACHE  = APP_DIR / "jdm.json"

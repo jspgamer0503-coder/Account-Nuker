@@ -7,7 +7,7 @@ A privacy-first CLI + web dashboard that scans your own email inbox to discover 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)
 ![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS-lightgrey?logo=linux)
 ![License](https://img.shields.io/badge/License-MIT-green)
-![Version](https://img.shields.io/badge/Version-1.2.0-informational)
+![Version](https://img.shields.io/badge/Version-1.3.0-informational)
 
 ---
 
@@ -173,10 +173,26 @@ The tool fetches the latest JDM data on each run. If the cache is stale, delete 
 ```bash
 rm ~/.account-nuker/jdm.json
 ```
-
 ---
 
+## Changelog
 
+### v1.3.0
+
+#### Fixed
+- JS ReferenceError in showPage() — event.currentTarget no longer undefined when called programmatically
+- CSS duplicate .log-warn rule removed
+- subprocess import ordering in browser_automation.py
+- xdg-open replaced with webbrowser module (cross-platform)
+- Removed unused dependencies: textual, beautifulsoup4
+- Added IMAP timeout (30s) to prevent hanging
+- Fixed redundant _glob casting in scan_browser_history()
+
+#### Changed
+- HTML/CSS/JS extracted from inline string to templates/index.html (Flask render_template)
+- requirements.txt cleaned of dead entries
+
+---
 
 ## License
 

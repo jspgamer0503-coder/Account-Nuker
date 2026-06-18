@@ -471,7 +471,7 @@ def scan_email(email_addr: str, password: str, dry_run=False,
     domains: set = set()
     try:
         console.print(f"[cyan]Connecting to {host}:{port}…[/]")
-        mail = imaplib.IMAP4_SSL(host, port)
+        mail = imaplib.IMAP4_SSL(host, port, timeout=30)
         mail.login(email_addr, password)
         log.info("IMAP login OK: %s @ %s", email_addr, host)
     except imaplib.IMAP4.error as e:
@@ -593,7 +593,7 @@ def scan_browser_history() -> set:
     profiles = _get_browser_profiles()
 
     for browser, paths in profiles.items():
-        path_list = list(paths) if not isinstance(paths, list) else paths
+        path_list = paths
         for db_path in path_list:
             if not _safe_exists(Path(db_path)):
                 continue
@@ -809,15 +809,13 @@ def interactive_menu(accounts, user_email, user_password, dry_run=False):
                 opened = 0
                 for acc in accounts:
                     if acc["difficulty"] in ("easy","medium") and acc["url"]:
-                        subprocess.Popen(["xdg-open", acc["url"]],
-                                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                        webbrowser.open(acc["url"])
                         opened += 1; time.sleep(0.3)
                 console.print(f"[green]Opened {opened} tabs.[/]")
             else:
                 try:
                     acc = accounts[int(idx_str)-1]
-                    subprocess.Popen(["xdg-open", acc["url"]],
-                                     stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                    webbrowser.open(acc["url"])
                 except (ValueError, IndexError):
                     console.print("[red]Invalid #[/]")
         elif choice == "a":

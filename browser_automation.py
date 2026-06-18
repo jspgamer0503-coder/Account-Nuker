@@ -23,6 +23,7 @@ import sys
 import time
 from pathlib import Path
 from typing import Optional
+import subprocess
 
 log = logging.getLogger("account-nuker.browser")
 
@@ -90,8 +91,6 @@ def _ensure_display():
             "Headful browser may fail. Start an X11 session or run with DISPLAY=:0"
         )
 
-
-import subprocess  # needed by _ensure_display above; import here too
 
 
 # ── CAPTCHA signature database ────────────────────────────────────────────────
